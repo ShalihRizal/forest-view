@@ -15,5 +15,17 @@ public class Mushroom : MonoBehaviour
         Vector3 force = new Vector3 (xForce, yForce, zForce);
 
         GetComponent<Rigidbody>().velocity = force;
+        
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine("delay", 3f);
+    }
+
+    IEnumerator delay(float amount)
+    {
+        yield return new WaitForSeconds(amount);
+        gameObject.SetActive(false);
     }
 }
